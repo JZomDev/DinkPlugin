@@ -53,6 +53,7 @@ JSON sent with every notification but only in certain circumstances:
     "avatarHash": "abc123def345abc123def345abc123de"
   },
   "world": 518,
+  "worldTypes": ["MEMBERS", "HARDCORE_MAIN"],
   "regionId": 12850
 }
 ```
@@ -60,7 +61,8 @@ JSON sent with every notification but only in certain circumstances:
 `clanName` is only sent when the player is in a clan and has the advanced setting `Send Clan Name` enabled.  
 `groupIronClanName` is only sent when the player is a GIM and has the advanced setting `Send GIM Clan Name` enabled.  
 The `discordUser` object is only sent when Discord is open and the advanced setting `Send Discord Profile` is enabled.  
-`world` and `regionId` are only sent when the advanced setting `Include Location` is enabled (default: true).
+`world`, `worldTypes`, and `regionId` are only sent when the advanced setting `Include Location` is enabled (default: true).  
+`worldTypes` lists the names of the [`WorldType`](https://static.runelite.net/runelite-api/apidocs/net/runelite/api/WorldType.html) values that apply to the current world, and is empty for worlds without any (e.g., a standard free-to-play world).
 
 Note: The examples below omit `playerName`, `accountType`, and `dinkAccountHash` keys because they are always the same.
 
@@ -272,7 +274,7 @@ The possible values for `extra.items[].criteria` correspond to our [`LootCriteri
 
 The items are valued at GE prices (when possible) if the user has not disabled the `Use actively traded price` base RuneLite setting. Otherwise, the store price of the item is used.
 
-The `extra.party` field is only populated for raids loot (i.e., COX, TOA, TOB).
+The `extra.party` field is only populated for raids loot (i.e., COX, TOA, TOB, TFA).
 
 The `extra.npcId` field is populated only if the `category` is NPC or PICKPOCKET.
 
